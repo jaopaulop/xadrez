@@ -22,22 +22,36 @@ void calcular_derivados(Carta *carta) {
     }
 }
 
+void limpar_buffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
 void cadastrar_carta(Carta *carta) {
     printf("\n=== CADASTRO DE CARTA ===\n");
     printf("Estado: ");
-    scanf("%s", carta->estado);
+    scanf("%49s", carta->estado);
+
     printf("Código: ");
-    scanf("%s", carta->codigo);
+    scanf("%9s", carta->codigo);
+
     printf("Cidade: ");
-    scanf("%s", carta->cidade);
+    limpar_buffer();
+    fgets(carta->cidade, sizeof(carta->cidade), stdin);
+    carta->cidade[strcspn(carta->cidade, "\n")] = 0;
+
     printf("População: ");
     scanf("%d", &carta->populacao);
+
     printf("PIB (bilhões): ");
     scanf("%f", &carta->pib);
+
     printf("Área (km²): ");
     scanf("%f", &carta->area);
+
     printf("Pontos turísticos: ");
     scanf("%d", &carta->pontos_turisticos);
+
     calcular_derivados(carta);
 }
 
