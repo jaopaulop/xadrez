@@ -1,0 +1,17 @@
+# Executáveis
+super_trunfo
+*.out
+
+# Arquivos de compilação
+*.o
+*.a
+*.so
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Macros
+.DS_Store
